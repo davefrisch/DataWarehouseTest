@@ -110,3 +110,31 @@ VALUES (4, 'Anthem', 4.63, 'Silver', getdate())
 INSERT INTO DBO.Risk (PersonID, AttributedPayer, RiskScore, RiskLevel, RiskDateTime)
 VALUES (5, 'Medicare', .342, 'Bronze', getdate() - 3)
 
+
+
+GO
+USE PersonDatabase
+GO
+CREATE SCHEMA Stage
+GO
+
+CREATE TABLE Stage.GroupDemographics(
+	SourceId VARCHAR(100) NOT NULL 
+	,FirstName VARCHAR(100)
+	,MiddleName VARCHAR(100)
+	,LastName VARCHAR(100)
+	,DateofBirth DATETIME
+	,Sex VARCHAR(10)
+	,FavoriteColor  VARCHAR(1000)
+	,[GroupName] VARCHAR(100)
+	,[Date] DATE
+)
+
+CREATE TABLE Stage.QuartersRisk(
+	SourceId VARCHAR(100) NOT NULL 
+	,[Quarter] CHAR(2)
+	,[AttributedFlag] CHAR(1)
+	,[RiskScore] NUMERIC(20,10)
+	,[GroupName] VARCHAR(100)
+	,[Date] DATE
+)
